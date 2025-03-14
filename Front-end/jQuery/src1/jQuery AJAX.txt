@@ -1,0 +1,86 @@
+#########################################################################################################################################################################################################################
+AJAX nedir?
+#########################################################################################################################################################################################################################
+AJAX (Asynchronous JavaScript and XML). 
+Asenkron: Eş zamansız (beklemez, paralel çalışır)
+Senkron: Eş zamanlı (bekler)
+HTTP: Hyper Text Transfer Protocol
+API: Application Programming Interface 
+REST: Representational State Transfer. 
+
+HTTP:
+- Client ile server arasındaki köprüdür. kullanıcı-bilgisayar veri alışverişi.
+
+REST:
+- Dağıtım sistemi tasarlamak
+- client - server haberleşme yapabilmesi için HTTP protokolü üzerinden çalışan mimariye denir.
+- XML veya JSON ile veri taşınır. (Güvenlik açısından XML, okunabilirlik açısından JSON)
+- REST mimarisini kullanan servisşer --> RESTFUL
+
+API:
+- yetenek paylaşımı
+
+AJAX:
+- Eş zamanlı değildir. İsteyen istediği zaman başlar biter
+- server ile haberleşerek veri alışverişinde bize yardımcı olur.
+- Ana mantık: sayfanın tamamını açmadan sadece ilgili yerleri server'dan veri alarak değiştirebilir/listeleyebilir.
+- AJAX ile sayfa yenilenmez. Sadece ilgili yerler yenilenir.
+- JS ile XMLHttpRequest kullanımıdır.
+- Server ile sayfa arasında veri alışverişini sağlar.
+- Sayfanın tamamının değil, ilgili kısmının değişmesini sağlar ve maliyeti azaltır.
+- Sayfa güncellenirken daha hızlı olmasını sağlar. 
+
+AJAX metotlar:
+    -> load()
+        Basit ve güçlü. Servedan alınan veriyi güncellemek için kullanılır.
+
+        $(selector).load(URL, data, callback);
+        #('deneme').load('text.txt')
+        #('deneme').load('text.txt', function(responseTxt, statusTxt, xhr))
+            responseTxt: return edilen veri
+            statusTxt: sonucun başarılı olma/olmama durumu
+            xhr: XMLHttpRequest objesi
+    
+    -> $.get() 
+        2 parametre alır: URL ve callback function
+
+    -> $.post()
+        3 parametre alır: URL, {}, callback function
+        karşı tarafa veri gönderilir.
+
+
+Fake API kurulumu
+
+    Rest Apı kurulumu
+    1-) node js kurulu olması gerekiyor.
+            Windows:
+            node.js zaten kuruluysa
+                - terminalde "node -v" ya da "node --version" çalıştırılarak bilgisayardaki sürüm öğrenilir.
+                - "npm show node version" komutu ile resmi node.js sürümü öğrenilir
+                - Güncelleme gerekiyorsa 
+                        sudo apt update
+                        sudo apt upgrade nodejs
+
+                        nvm install node  # NVM (Node Version Manager) kullanılıyorsa
+
+
+    2-) C→ restapi (dizin oluştur) → restExamples
+
+    3-) cmd açıyoruz Kısayol Window → Windows Bayrağı+R
+
+    4-) cd C:\restapi\restExamples
+
+    5-) npm install -g json-server
+
+    6-) C:\restapi\restExamples\ dizin içine fakeApi.json oluşturuyoruz. (not defteriyile ya da ilgili dizinde "echo {} > fakeApi.json" komutu ile)
+
+    7-) json-server --watch fakeApi.json
+
+
+    8-) Dikkat: Ne olur olmaz chrome browser Ctrl+F5 ile cache belleği temizliyelim
+
+    9-) http://localhost:3000
+
+
+    Hamit hocanın kullandığı stil
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

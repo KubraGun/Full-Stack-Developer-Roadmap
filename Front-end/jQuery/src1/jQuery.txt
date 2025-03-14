@@ -1,0 +1,372 @@
+##################################################################################################################################################################################################################################################
+                                                                                                                    jQuery Nedir?
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+jQuery Nedir?
+    - resmi web sitesi: https://www.jquery.com - api.jquery.com
+    - https://www.jqueryui.com
+    -JS tabanlı kütüphanedir
+    -DOM manipülasyonunu, etkileşimleri yönetmeyi, animasyonlar oluşturmayı, AJAX ile sunucu iletişimi sağlamayı kolaylaştırır
+
+Temel özellikleri:
+    - DOM (Document Object Model) manipulation: HTML balgelerindeki öğeleri seçme, değiştirme, silme gibi işlemleri kolaylaştırır. CSS tarzını değiştirme, öğe ekleme/kaldırma gibi işlemler için kullanılabilir.
+    - Event handling etkileşim yönetimi: Etkileşimlerin yönetilmesini sağlar. Tıklama, hover.. Yönetebilmek için bir dizi olay yöneticisi sağlar. 
+    - Animasyonlar ve efektler: Web sayfalarına animasyonlar eklemek için kullanılır. Öğelerin kaydırılması, gizlenmesi, gösterilmesi vb..
+    - AJAX ile sunucu iletişimi - AJAX desteği: Sunucudan veri alma ve gönderme. AJAX çağrılarını yapmayı kolaylaştırır. Web sayfalarının arka planda sunucu ile iletişim kurmasını sağlar ve sayfa yenileme gereksinimini azaltır.
+    - Modüler ve hafif: İhtiyaç duyulan özelliklerin kullanılmasına olanak tanır, gereksiz kod yükünü azaltır.
+    - Web geliştirme sürecini hızlandırmak için kullanılan güçlü bir araç, yaygın olarak kullanılmakta.
+    - Modern JS ve CSS özelllikleriyle birlikte gelişen web teknolojileri, jQuery'ye bağımlılığı azaltmıştır. Bu yüzden jQuery'nin kullanımı belirli projelerde veya gereksinimlerde tercihe bağlı olabilir.
+
+jQuery kurumu:
+    3 farklı yöntemle kurulabilir
+        1- CDN
+        2- Dosya indirme (Offline Kullanımlar için)
+        3- npm/yarn ile yükleme
+
+jQuery Cdn:
+    jQuery'nin dahil edilmesi
+    http://jQuery.com/download adresinden işletim sistemine uygun olan (Windows, Linux, Mac OS vb) bir sürüm indirilir. Bu andan itibaren jQuery kütüphaneleri HTML5 kodu içinde kullanılabilir
+    <script src="https://code.jquery.com/jquery-{version}.js"></script>
+
+    jQuery'nin bilgisayara indirilmesi istenmiyorsa CDN (Content Delivery Network) yoluyla da kullanılabilir.
+        Google CDN: 
+            <head>
+                <script src="http://ajax.googleapis.com/ajax/libs/jQuery/1.11.1/jQuery.min.js"></script>
+            </head>
+        
+        Microsoft CDN:
+            <head>
+                <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jQuery-1.11.1.min.js"></script>
+            </head>
+
+
+
+VS Code Extension:
+    - jQuery code snippets --> Don Jayamanne
+    - jQuery Snippets --> Hridoy
+
+
+jQuery yazılış biçimi:
+    $(<tag>).<action>()
+
+    Komut örnekleri
+        $(this).hide() – O anda aktif olan elemanı gizler (görünmez hale getirir).
+        $("p").hide() – Bütün paragraf elemanlarını (<p>) gizler.
+        $(".txt").hide() - class="txt" olan bütün elemanları gizler.
+        $("#test").hide() - id="test" olan elemanları gizler.
+        jQuery, HTML elemanını seçme ifadelerinde CSS yazılış biçimlerini kullanır.
+
+
+##################################################################################################################################################################################################################################################
+                                                                                                            Document Ready, Selector
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+Document Ready
+    - Document -> web sayfası
+    - $(document).ready() : jQuery'de olay işleyicisidir ve DOM ağacı tamamen yüklendiğinde çalışacak kod bloğunu belirtirken kullanılır. Bu, sayfa yüklendiğinde betik dosyasının çalıştırılmasını beklemek için kullanışlı bir yöntemdir.
+                            Sayfa yüklendikten sonra DOM ağacının tüm öğelerine erişim sağlar.
+    - Böyle yapılmasının en önemli sebebi, herhangi bir jQuery kodunun belgenin yüklenmesi sonuçlanmadan çalıştırılmasını önlemektir. Örneğin; 
+        -> Henüz oluşmamış bir elemanı gizlemeye çalışmak
+        -> Henüz tam yüklenmemiş bir resmin boyutunu almaya çalışmak
+    - jQuery ekibinin DRE (Document Ready Event) için hazırladığı daha basit bir şekil ise aşağıdadır:
+        $(function(){
+            // jQuery metotları
+        });
+
+    Örnek:
+        $(document).ready(function(){
+            $('#gosterBtn').click(function(){
+                $('#gizliMetin').show(); // metni göster
+            });
+        });
+
+Selector
+    - jQuery'nin en önemli özelliklerinden biridir. belirli bir HTML ögelerini seçmek için kullanılan bir dizi ifadedir. Bu ifadeler belirli öğeleri, sınıfları, id'leri veya diğer HTML öğelerini seçmek için CSS benzeri seçicileri kullanır.
+    - HTML belgesindeki öğeleri seçmek için kullanılır ve bu seçiciler jQuery fonksiyonu içine yerleştirilerek belirli bir öğenin seçilmesini sağlar.
+    - Seçiciler, CSS seçicileriyle benzerlik gösterir. CSS seçicilerini bilmek kolaylık sağlar.
+    - jQuery, HTML elemanlarını seçmek ya da bulmak için aşağıdaki bilgileri kullanır:
+        Elemanın ID'si
+        Elemanın sınıfı (class)
+        Elemanın tipi
+        Elemanın vasıfları (attribute)
+        Elemanın vasıf değerleri
+        ve bunlara benzer diğer bilgiler
+
+        Genellikle jQuery'nin seçicileri CSS'e dayanır; kendisine özgü birkaç seçici de mevcuttur.
+
+        jQuery'de bütün seçiciler, bir dolar işaretiyle başlar ve parantezler içindeki ifade ile devam eder:
+
+        $()
+        
+
+        Eleman seçimi
+        jQuery eleman seçicisi, elemanları adına göre seçer. Eğer kod içindeki bütün paragraf elemanlarını (<p>) seçmek istiyorsanız aşağıdaki ifadeyi kullanmalısınız:
+
+        $("p")
+        Bir düğmeye tıklayınca tüm paragrafları görünmez hale getirelim:
+
+        $(document).ready(function(){
+        $("button").click(function(){
+            $("p").hide();
+        });
+        });
+        
+
+        #id seçicisi
+        jQuery #id seçicisi, HTML tag'ının id özelliğini kullanarak belirlenen bir elemanı seçer. Sayfa içinde id unique (tek) olmalıdır:
+
+        $("#test")
+        Kullanıcı bir düğmeye tıklayınca id="t1" olan elemanın gizlenmesi
+
+        $(document).ready(function(){
+        $("button1").click(function(){
+            $("#t1").hide();});
+        });
+        
+
+        Sınıf seçicisi
+        jQuery sınıf seçicisi belirli bir sınıf elemanlarını sınıf adı ile bulur. Belirli bir sınıfın elemanlarını bulmak için, sınıf adından önce bir nokta sembolü yerleştirmek gerekir:
+
+        $(".sali")
+        
+
+        Sınıf seçicisi: Kapsamlı örnek HTML5 programı
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                                    $("button").click(function(){
+                                                        $(".pers").hide();
+                                                        });
+                                    });
+                    </script>
+            </head>
+            <body>
+                
+                <h2 class="pers">Butona tıklarsan ben yok olurum ☹</h2>
+                <p class="pers">Ben de yok olurum ☹</p>
+                <p>Ben kalırım ☺</p>
+                <button>Tıkla</button>
+            </body>
+        </html>
+
+
+        Diğer seçici İfadeler:
+            Yazılış Biçimi	Açıklama
+            $("*")	Bütün elemanları seçer
+            $(this)	O anda aktif olan HTML5 elemanını seçer
+            $("p.d1")	class="d1"  olan bütün <p> elemanlarını seçer
+            $("p:first")	İlk <p> elemanını seçer
+            $("ul li:first")	İlk <ul> elemanının ilk <li> elemanını seçer
+            $("p:last") Son p elemanını seçer
+            $("ul li:first-child")	Her <ul>elemanının ilk <li> elemanını seçer
+            $("[href]")	href vasfını içeren bütün elemanları seçer
+            $("a[target='_blank']")	Hedef vasıf değeri  "_blank" olan bütün <a> elemanlarını seçer
+            $("a[target!='_blank']")	Hedef vasıf değeri "_blank" olmayan bütün <a> elemanlarını seçer."_blank"
+            $(":button")	<button> tipindeki bütün <button> ve <input> elemanlarını seçer
+            $("tr:even")	Bütün çift <tr> elemanlarını seçer
+            $("tr:odd")	Bütün tek <tr> elemanlarını seçer
+            $("p:not(.exclude)") - :not. Belirtilen seçici dışındaki öğeleri seçer (Class ı exclude olmayanlar seçilir)
+
+        Örnekler:
+        1. Tabloda çift satırları pembeye boyama
+
+        HTML5 Kodu
+
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                    $("tr:even").css("background-color","pink");
+                                    });
+                </script>
+            </head>
+
+        <body>
+            <h1>BALKAN ULKELERI</h1>
+                <table border="1">
+                    <tr>
+                        <th>ULKE</th>
+                        <th>NUFUS</th>
+                    </tr>
+                    <tr>
+                        <td>TURKIYE</td>
+                        <td>78</td>
+                    </tr>
+                    <tr>
+                        <td>YUNANISTAN</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td>BULGARISTAN</td>
+                        <td>8.5</td>
+                    </tr>
+                    <tr>
+                        <td>ROMANYA</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>BOSNA-HERSEK</td>
+                        <td>4</td>
+                    </tr>
+                </table>
+            </body>
+        </html>
+
+
+        
+
+        Örnek: İlk <ul> elemanının ilk <li> elemanını seçme
+
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                                    $("button").click(function(){
+                                                        $("ul li:first").hide();
+                                                        });
+                                    });
+                    </script>
+            </head>
+            <body>
+                
+                <p>1.LISTE:</p>
+                <ul>
+                    <li>ALMANYA</li>
+                    <li>HOLLANDA</li>
+                    <li>BELCIKA</li>
+                </ul>
+                
+                <p>2.LISTE:</p>
+                <ul>
+                    <li>INGILTERE</li>
+                    <li>RUSYA</li>
+                    <li>ISVEC</li>
+                </ul>
+                
+                <button>TIKLA</button>
+                
+            </body>
+        </html>
+
+        Burada tıkla düğmesine basıldığında ALMANYA görünmez olacaktır (listenin ilk elemanı)
+
+
+##################################################################################################################################################################################################################################################
+                                                                                                         Event Handling
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+Kullanıcıların web sayfasıyla fare, klavye vs. etkileşime girmesini sağlar. Olayları yönetmek için JS'den daha kolay yöntem sunar.
+Event handling avantajları:
+    - Daha kısa ve okunaklı kod
+    - Tarayıcı uyumluluğu -> jQuery tüm tarayıcılarla uyumludur. JS bazı tarayıcılarda farklılık gösterebilir
+    - Daha kolay dinamik element yönetimi -> on metodu ile sonradan eklenen elemanlara event bağlanabilir
+    - Birden fazla event tanımlayabilme
+
+Event Tipleri:
+    1. Mouse Events
+      Fare elementin üzerine geldiğinde, tıklama yapıldığında, fare öğenin üzerinden çıktığında.
+        1.1. click: 
+            Kullanıcı belirtilen HTML öğesine tıkladığında istenen fonksiyon çalışır.
+
+            $("p").click(function(){
+                $(this).hide();
+            });
+
+        1.2. dblclick: 
+            HTML elementine 2 kez tıklandığında belirtilen fonksiyon çalışır.
+
+            $("p").dblclick(function(){
+                $(this).hide();
+            });
+        
+        1.3. mouseenter
+            Fare imleci HTML elemanın üzerine gelince fonksiyon çalışır.
+
+            $("#p1").mouseenter(function(){
+                alert("p1 uzerindesiniz!");
+            });
+
+
+        1.4. mouseleave
+            Mouse imleci HTML elemanının üzerini terk edince çalışır. 
+
+
+
+        1.5. mousemove
+            Fare imleci seçili öğe içinde hareket ettiğinde, fonksiyon çalışır. Kullanıcı fareyi her bir piksel hareket ettirdiğinde bir mousemove olayı meydana gelir. Tüm mousemove olaylarını işlemek için sistem kaynakları gerekir.
+            
+            $(selector).mousemove(function)
+
+            mousemove() --> imlecin koordinat sistemindeki x ve y koordinatlarını gösterir
+
+            on() --> çoklu eventler için
+            on(
+                {
+                    click: function {},
+                    mouseenteR: function() {},
+                    mouseleave: function() {}
+                }
+            )
+
+
+
+        1.6. mouseover
+            Fare imleci elementin üzerine gelince fonksiyon gerçekleşir. Mouseenter olayından farklı olarak, fare imleci seçili öğenin yanı sıra herhangi bir alt öğeye girerse tetiklenir.
+                mouseenter --> bir öğeye fare girdiğinde yalnızca 1 kez tetiklenir. Bubbling yapmaz yani iç içe geçmiş öğeler olduğunda yalnızca hedeflenen öğede çalışır, alt öğelerde çalışmaz. Örneği;
+                    $(document).ready(function(){
+                        $("#box").mouseenter(function(){
+                        console.log("mouseenter olayı tetiklendi!");
+                        });
+                    });
+                    Burada #box öğesinin içine girildiğinde olay çalışır. Eğer içinde başka öğeler varsa ve fare onların üzerine geçerse tekrar tetiklenmez.
+                mouseover --> bir öğeye fare girdiğinde tetiklenir ancak alt öğeler üzerine de girildiğinde tekrar tetiklenir.      
+                    $(document).ready(function(){
+                         $("#box").mouseover(function(){
+                          console.log("mouseover olayı tetiklendi!");
+                                         });
+                });
+
+               
+
+
+        1.7. mouseout
+
+        1.8. mousedown
+            Farenin sol tuşuna basılı tutulduğu zaman boyunca gerçekleşmesi gereken olaylar için.
+        
+        1.9. mouseup
+            Fareye basılıp çekildiği an gerçekleşmesi istenilen olaylar için. 
+        1.10. hover
+
+    2. Keyboard Events
+      2.1. keydown
+
+      2.2. keyup
+
+      2.3. keypress
+
+      2.4. which
+
+
+
+
+
+
+
+
+
+###################################################################################################################################################################################################################################################################
+                                                                                                                            RESOURCES
+####################################################################################################################################################################################################################################################################
+1- Techcareer.net
+2- w3schools.com
+3- geeksforgeeks
+4- BTK Akademi
+5- Turkcell geleceği yazanlar
+6- api.jquery.com
