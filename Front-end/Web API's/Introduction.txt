@@ -1,0 +1,77 @@
+##############################################################################################################################################################################
+                                                                    WEB API NEDİR?
+______________________________________________________________________________________________________________________________________________________________________________
+Web API, web uygulamaları için geliştiricilere sunulan bir programlama arayüzüdür. Bir tarayıcı API'si bir web tarayıcısının işlevselliğini genişletebilir. Sunucu API'si de
+sunucu işlevselliğini genişletebilir. bunun için HTTP protokolü kullanılır. Bu yüzden HTTP yöntemleri bilinmelidir. 
+    - GET : Veri almak için
+    - POST: Yeni bir veri oluşturmak/eklemek
+    - PUT / PATCH: Veri güncellemek
+    - DELETE: Veri silmek
+
+    REST API:
+    Client -> istek <-JSON-> GET/POST/DELETE/PATCH <-HTTP-> <- Response <- Server 
+
+
+Tarayıcı API'leri: tüm tarayıcılarda kopleks işlemleri destekler ve verilere erişime yardımcı olmak için Web API'ler vardır. 
+    Örnek: Geolocation API - Tarayıcının bulunduğu yerin koordinatlarını döndürür.
+            Bu api ile kullanıcının konumunun enlemini ve boylamını alalım:
+            ______________________________________________________________________________
+            Code 1.
+            ______________________________________________________________________________
+            const myElement = document.getElementById("demo");
+
+            function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                myElement.innerHTML = "Geolocation is not supported by this browser.";
+            }
+            }
+
+            function showPosition(position) {
+            myElement.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+            }
+            ______________________________________________________________________________
+
+Üçüncü taraf API'leri: Bunlar kullanılabilmesi için kodları indirilmelidir. Tarayıcıya yerleşik değildir.
+    - Youtube API - Bir web sitesinde video oynatılmasını sağlar
+    - Google Maps API - Bir web sitesinde haritaları gösterir
+    - Twitter API - Web sitesinde tweetlerin gösterilmesine olanak tanır
+    - Facebook API - Facebook bilgilerinin web sitesinde görüntülenmesini sağlar
+
+
+XMLHTTPREQUEST:
+    - Tüm modern tarayıcılar destekler
+    - Tarayıcıya ait bir nesnedir. Kod satırında önce bir nesne oluşturulur. Bu nesne web sunucusuyla veri alışverişinde bulunmak için kullanılır. 
+    - Tüm sayfayı yeniden yüklemeden web sayfasının bölümlerini güncellemeyi mümkün kılar.
+    - Kullanımı:
+        ______________________________________________________________________________
+        Code 2.
+        ______________________________________________________________________________
+        const xhr = new XmlHttpRequest();
+
+        // description callback func.Callback func -> başka bir fonksiyona parametre 
+        // olarak geçirilen fonksiyondur. Bu durumda callback func. yanıt 
+        // hazır olduğunda yürütülecek kodu içerir.
+        xhr.onload = () => {
+            ...
+        }
+
+        // sunucuya istek at
+        xhr.open(); // Tek parametre aldığı durum -> İstek atılacak URL
+                   // 2 parametre aldığı durum --> Http method, URL
+        xhr.send();
+        ______________________________________________________________________________
+
+
+
+
+#########################################################################################################################################################################################################################
+
+KAYNAKLAR:
+1. https://www.w3schools.com/  - W3Schools
+2. https://medium.com/@muhammedyucedag/nedir-bu-web-api-1192e0d72b3d
+3. https://en.wikipedia.org/wiki/Web_API
+4. https://geeksforgeeks.com/
+5. whatwg.org
